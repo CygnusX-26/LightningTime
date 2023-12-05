@@ -77,11 +77,4 @@ class Lightning:
     def __str__(self) -> str:
         return str(self.timestring)
 
-lt = Lightning(Timestring("a~b~c|d"))
-print(lt.timestring.bolts) # a
-lt.timestring.zap # b
-lt.timestring.spark # c
-lt.timestring.charge # d)
-print(Lightning.from_lightning(Lightning.to_lightning(datetime.now())))
-
     
