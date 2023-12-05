@@ -1,6 +1,5 @@
 from __future__ import annotations
 from datetime import datetime
-from Timestring import Timestring
 
 class Lightning:
 
@@ -35,7 +34,7 @@ class Lightning:
     def from_lightning(lightning:Lightning, withseconds:bool=True) -> str:
 
         """
-        Converts a Lightning object into a datetime object.
+        Converts a Lightning object into a time string.
         """
 
         total_charges = (int(lightning.timestring.charges, 16)+int(lightning.timestring.sparks, 16)*16+int(lightning.timestring.zaps, 16)*16**2+int(lightning.timestring.bolts, 16)*16**3)/(16**4)
@@ -77,4 +76,26 @@ class Lightning:
     def __str__(self) -> str:
         return str(self.timestring)
 
+
+class Timestring:
+
+    """
+    A class that represents a lightning timestring.
+    """
+    def __init__(self, timestring:str=None) -> None:
+        self.timestring = timestring if timestring is not None else "0~0~0|0"
+        try:
+            self.bolts = self.timestring.split("~")[0]
+            self.zaps = self.timestring.split("~")[1]
+            self.sparks = self.timestring.split("~")[2].split("|")[0]
+            self.charges = self.timestring.split("|")[1]
+            if len(self.charges) > 1:
+                raise IndexError
+        except IndexError:
+            raise ValueError("Invalid timestring.")
+        
+    def __str__(self) -> str:
+        return self.timestring
     
+    def get_parts(self):
+        return (self.bolts, self.zaps, self.sparks, self.charges)

@@ -10,11 +10,15 @@ Learn more about how Lightning Time works & play with it hands-on: [here](https:
 pip3 install lightning-time
 ```
 
+```python
+from LightningTime.Lightning import Lightning, Timestring
+```
+
 # Usage
 
 ## Colors
 ```python
-from lightning_time import Lightning, Timestring
+from LightningTime.Lightning import Lightning, Timestring
 
 # Create a Lightning object
 lt = Lightning(Timestring("a~b~c|d"))
@@ -64,12 +68,14 @@ Lightning.from_lightning(Lightning.to_lightning(datetime.now()), withseconds=Tru
 ## Color String
 
 ```python
+from datetime import datetime
 Lightning.to_lightning(datetime.now()).color_strings() # ('#e3a100', '#3238d6', '#f68582')
 ```
 
 ## Print without charges
 
 ```python
+from datetime import datetime
 Lightning.to_lightning(datetime.now()).strip_charges() 
 # e~3~a
 ```
@@ -78,10 +84,14 @@ Lightning.to_lightning(datetime.now()).strip_charges()
 
 ```python
 lt = Lightning(Timestring("a~b~c|d"))
-lt.timestring.bolt # a
-lt.timestring.zap # b
-lt.timestring.spark # c
-lt.timestring.charge # d
+lt.timestring.bolts # a
+lt.timestring.zaps # b
+lt.timestring.sparks # c
+lt.timestring.charges # d
 ```
+---
 
+## Contributing
+
+This project is still under development, feel free to contribute by opening a pull request.
 
